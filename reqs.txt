@@ -1,3 +1,4 @@
 requests
 flask
 Adafruit_DHT
+gunicorn
