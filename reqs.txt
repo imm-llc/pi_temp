@@ -1,0 +1,3 @@
+requests
+flask
+Adafruit_DHT

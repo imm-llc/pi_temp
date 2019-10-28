@@ -1,0 +1,1 @@
+# https://github.com/imm-llc/slack_alert_api/blob/master/slack_alert_api.spec
