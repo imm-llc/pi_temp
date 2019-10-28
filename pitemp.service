@@ -12,4 +12,5 @@ Group=api
 WorkingDirectory=/var/local/pi_temp/
 Environment="PATH=/var/local/pi_temp/:$PATH"
 Environment="PI_TEMP_APP_SETTINGS=/etc/sysconfig/pitemp"
+Environment="FLASK_APP=main.py"
 ExecStart=/usr/local/bin/gunicorn --workers 3 -b 127.0.0.1:5000 main:app
