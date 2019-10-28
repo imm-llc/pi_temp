@@ -45,7 +45,7 @@ pipeline{
                             configName: "yum.imm.corp",
                             verbose: true,
                             transfers: [
-                                sourceFiles: /var/lib/jenkins/workspace/pi_temp.noarch.rpm,
+                                sourceFiles: '/var/lib/jenkins/workspace/pi_temp/pi-temp.noarch.rpm',
                                 remoteDirectory: '/var/www/html/repos/bhi/',
                                 execCommand: '/usr/bin/createrepo -d /var/www/html/repos/bhi'
                             ]
