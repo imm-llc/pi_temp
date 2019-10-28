@@ -42,7 +42,7 @@ pipeline{
                     sshPublisher(
                         failOnError: true,
                         publishers: [
-                            configName: "yum.imm.corp"
+                            configName: "yum.imm.corp",
                             verbose: true,
                             transfers: [
                                 sourceFiles: /var/lib/jenkins/workspace/pi_temp.noarch.rpm,
