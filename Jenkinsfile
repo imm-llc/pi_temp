@@ -3,6 +3,10 @@ pipeline{
         // Master can SSH to yum
         label 'master'
     }
+
+    options{
+        buildDiscarder(logRotator(numToKeepStr: '8'))
+    }
     stages{
         stage("Verify build environment"){
             steps{
