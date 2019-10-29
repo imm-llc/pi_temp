@@ -15,14 +15,21 @@ pipeline{
         }
         stage("Build package"){
             steps{
-                script{
-                    sh '''
-                        mv pi-temp.spec ~/rpmbuild/SPECS/
-                        tar zcvf ~/rpmbuild/SOURCES/pi-temp.tar.gz .
-                        rpmbuild -ba ~/rpmbuild/SPECS/pi-temp.spec
-                        mv ~/rpmbuild/RPMS/noarch/pi-temp-1.0-1.noarch.rpm /var/lib/jenkins/workspace/pi_temp/pi-temp.noarch.rpm
-                    '''
+                withCredentials(
+                    [
+                        string(credentialsId: 'RPM_SIGNING_PASSWORD', variable: 'RPM_SIGNING_PASSWORD')
+                    ]
+                ){
+                    script{
+                        sh '''
+                            mv pi-temp.spec ~/rpmbuild/SPECS/
+                            tar zcvf ~/rpmbuild/SOURCES/pi-temp.tar.gz .
+                            echo ${RPM_SIGNING_PASSWORD} | setsid rpmbuild -ba --sign ~/rpmbuild/SPECS/pi-temp.spec
+                            mv ~/rpmbuild/RPMS/noarch/pi-temp-1.0-1.noarch.rpm /var/lib/jenkins/workspace/pi_temp/pi-temp.noarch.rpm
+                        '''
                 }
+                }
+                
             }
         }
         /*
@@ -39,18 +46,10 @@ pipeline{
         stage("Push package"){
             steps{
                 script{
-                    sshPublisher(
-                        failOnError: true,
-                        publishers: [
-                            configName: "yum.imm.corp",
-                            verbose: true,
-                            transfers: [
-                                sourceFiles: '/var/lib/jenkins/workspace/pi_temp/pi-temp.noarch.rpm',
-                                remoteDirectory: '/var/www/html/repos/bhi/',
-                                execCommand: '/usr/bin/createrepo -d /var/www/html/repos/bhi'
-                            ]
-                        ]
-                    )
+                    sh '''
+                        scp -i ~/.ssh/scp_yum.key pi-temp.noarch.rpm jenkins@yum:/var/www/html/repos/bhi 
+                        ssh  -i ~/.ssh/scp_yum.key jenkins@yum '/usr/bin/createrepo -d /var/www/html/repos/bhi'
+                    '''
                 }
             }
 
