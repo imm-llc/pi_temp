@@ -40,7 +40,7 @@ mkdir -p %{buildroot}/var/local/pi_temp
 mkdir -p %{buildroot}/etc/systemd/system
 mkdir -p %{buildroot}/etc/sysconfig
 mkdir -p %{buildroot}/src/app
-mv %{_builddir}/src/app %{buildroot}/var/local/pi_temp
+mv %{_builddir}/pi-temp/src/app %{buildroot}/var/local/pi_temp
 touch %{buildroot}/etc/sysconfig/pitemp
 install -m 0640 %{_builddir}/src/main.py %{buildroot}/var/local/pi_temp
 install -m 0640 %{_builddir}/reqs.txt %{buildroot}/var/local/pi_temp/pipfile
