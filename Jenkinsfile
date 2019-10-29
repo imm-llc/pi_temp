@@ -20,7 +20,7 @@ pipeline{
                         mv pi-temp.spec ~/rpmbuild/SPECS/
                         tar zcvf ~/rpmbuild/SOURCES/pi-temp.tar.gz .
                         rpmbuild -ba ~/rpmbuild/SPECS/pi-temp.spec
-                        mv ~/rpmbuild/RPMS/noarch/pi-temp-1.0.noarch.rpm /var/lib/jenkins/workspace/pi_temp/pi-temp.noarch.rpm
+                        mv ~/rpmbuild/RPMS/noarch/pi-temp-1.0-1.noarch.rpm /var/lib/jenkins/workspace/pi_temp/pi-temp.noarch.rpm
                     '''
                 }
             }
