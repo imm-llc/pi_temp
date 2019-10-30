@@ -90,9 +90,6 @@ if [ "$1" = "2" ]; then
   echo "##############################"
   echo "Upgrading PiTemp"
   echo "##############################"
-  echo "Copying old config to /tmp/pi-temp.backup.$(date +%F%s)"
-  cp /etc/sysconfig/pi-temp /tmp/pi-temp.backup.$(date +%F%s)
-  echo "##############################"
   echo "Reloading daemons"
   systemctl daemon-reload 
   echo "##############################"
