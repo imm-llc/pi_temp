@@ -12,5 +12,5 @@ humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
 
 def get_humidity():
     if humidity is not None:
-        print(f"Humidity reading is {humidity}")
+        print("Humidity reading is: %f" % humidity)
         return humidity
