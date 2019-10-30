@@ -3,7 +3,7 @@ import Adafruit_DHT
 from flask import current_app as app
 
 SENSOR_NUMBER = app.config['DHT_SENSOR']
-DHT_SENSOR = Adafruit_DHT.SENSOR_NUMBER
+DHT_SENSOR = Adafruit_DHT.DHT22
 DHT_PIN = app.config['DHT_PIN']
 
 
