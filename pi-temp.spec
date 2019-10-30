@@ -80,7 +80,10 @@ if [ "$1" = "1" ]; then
     fi
     echo "##############################"
     echo "Installing python dependencies"
-    /usr/local/bin/pip3 install -r /var/local/pi_temp/pipfile 
+    /usr/local/bin/pip3 install -r /var/local/pi_temp/pipfile
+    echo "##############################"
+    echo "Reloading daemons"
+    systemctl daemon-reload 
 fi
 
 if [ "$1" = "2" ]; then
@@ -89,6 +92,9 @@ if [ "$1" = "2" ]; then
   echo "##############################"
   echo "Copying old config to /tmp/pi-temp.backup.$(date +%F%s)"
   cp /etc/sysconfig/pi-temp /tmp/pi-temp.backup.$(date +%F%s)
+  echo "##############################"
+  echo "Reloading daemons"
+  systemctl daemon-reload 
   echo "##############################"
   echo "Starting PiTemp"
   systemctl start pi-temp
