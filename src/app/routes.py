@@ -1,6 +1,7 @@
 from app import app
 from app.monitors import temp_monitor, humidity_monitor
 from flask import jsonify
+
 @app.route('/temp')
 def temp():
 
