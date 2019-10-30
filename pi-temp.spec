@@ -1,8 +1,8 @@
 
 %define name pi-temp
-%define version 1.0
-%define unmangled_version 1.0
-%define unmangled_version 1.0
+%define version 1.1
+%define unmangled_version 1.1
+%define unmangled_version 1.1
 %define release 1
 %define _tmppath /tmp/rpm
 
