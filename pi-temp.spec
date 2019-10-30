@@ -1,8 +1,8 @@
 
 %define name pi-temp
-%define version 1.2.3
-%define unmangled_version 1.2.3
-%define unmangled_version 1.2.3
+%define version 1.2.4
+%define unmangled_version 1.2.4
+%define unmangled_version 1.2.4
 %define release 1
 %define _tmppath /tmp/rpm
 
@@ -37,7 +37,7 @@ rm -rf %{buildroot}/*
 
 %install
 mkdir -p %{buildroot}/var/local/pi_temp
-mkdir -p %{buildroot}/etc/systemd/system
+mkdir -p %{buildroot}/usr/lib/systemd/system
 mkdir -p %{buildroot}/etc/sysconfig
 mkdir -p %{buildroot}/src/app
 mv %{_builddir}/pi-temp/src/app %{buildroot}/var/local/pi_temp/app
@@ -45,7 +45,7 @@ mv %{_builddir}/pi-temp/src/app %{buildroot}/var/local/pi_temp/app
 install -m 0644 %{_builddir}/pi-temp/pi-temp.conf %{buildroot}/etc/sysconfig/pi-temp
 install -m 0640 %{_builddir}/pi-temp/src/main.py %{buildroot}/var/local/pi_temp/main.py
 install -m 0640 %{_builddir}/pi-temp/reqs.txt %{buildroot}/var/local/pi_temp/pipfile
-install -m 0644 %{_builddir}/pi-temp/pi-temp.service %{buildroot}/etc/systemd/system/
+install -m 0644 %{_builddir}/pi-temp/pi-temp.service %{buildroot}/usr/lib/systemd/system/pi-temp.service
 
 %pre
 
@@ -108,5 +108,5 @@ rm -rf %{buildroot}/*
 %files
 %defattr(-,api,root)
 /var/local/pi_temp
-%attr(0644,root,root) /etc/systemd/system/pi-temp.service
+%attr(0644,root,root) /usr/lib/systemd/system/pi-temp.service
 %config %attr(0644,api,api) /etc/sysconfig/pi-temp
