@@ -9,4 +9,4 @@ def temp():
 @app.route('/humidity')
 def humidity():
     
-    return jsonify({"humidityss": humidity_monitor.get_humidity()})
+    return jsonify({"humidity": humidity_monitor.get_humidity()})

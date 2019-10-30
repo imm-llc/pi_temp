@@ -29,7 +29,7 @@ pipeline{
                             mv pi-temp.spec ~/rpmbuild/SPECS/
                             tar zcvf ~/rpmbuild/SOURCES/pi-temp.tar.gz .
                             echo ${RPM_SIGNING_PASSWORD} | setsid rpmbuild -ba ~/rpmbuild/SPECS/pi-temp.spec
-                            mv ~/rpmbuild/RPMS/noarch/pi-temp-1.2-1.noarch.rpm /var/lib/jenkins/workspace/pi_temp/pi-temp.noarch.rpm
+                            mv ~/rpmbuild/RPMS/noarch/pi-temp-1.2.1-1.noarch.rpm /var/lib/jenkins/workspace/pi_temp/pi-temp.noarch.rpm
                         '''
                 }
                 }
