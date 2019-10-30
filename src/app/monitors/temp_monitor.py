@@ -12,5 +12,5 @@ humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
 def get_temp():
     if temperature is not None:
         farenheight = 9.0/5.0 * temperature + 32 + app.config['TEMP_OFFSET']
-
+        print(f"Temperature reading is {farenheight}")
         return farenheight
