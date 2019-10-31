@@ -31,3 +31,7 @@ No logging
 The RPM installs the app config to `/etc/sysconfig/pi-temp`. You can modify the GPIO PIN (`DHT_PIN`) and the temperature offset (`TEMO_OFFSET`)
 
 The systemd service is installed at `/usr/lib/systemd/system/pi-temp.service`.
+
+## Extending
+
+It should be fairly easy to poll additional sensors. For simplicity's sake, I would add additional modules in `src/app/monitors/` and give them each a route off of `/temp` (e.g. `/temp/serverroom`, `/temp/breakroom`)
