@@ -14,8 +14,8 @@ def get_temp():
         if temperature is not None:
             farenheight = 9.0/5.0 * temperature + 32 + app.config['TEMP_OFFSET']
             print("Temperature reading is: %f" % farenheight)
-            return {"temperature": temperature, "error": "no"}
+            return {"temperature": farenheight, "error": "no"}
         else:
-            return {"temperature": temperature, "error": "yes"}
+            return {"temperature": farenheight, "error": "yes"}
     except Exception as e:
-        return {"temperature": temperature, "error": "yes", "err_string": str(e)}
+        return {"temperature": farenheight, "error": "yes", "err_string": str(e)}
