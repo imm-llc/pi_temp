@@ -8,9 +8,12 @@ DHT_PIN = app.config['DHT_PIN']
 
 def get_temp():
 
-    humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
-    
-    if temperature is not None:
-        farenheight = 9.0/5.0 * temperature + 32 + app.config['TEMP_OFFSET']
-        print("Temperature reading is: %f" % farenheight)
-        return farenheight
+    try:
+        humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
+        
+        if temperature is not None:
+            farenheight = 9.0/5.0 * temperature + 32 + app.config['TEMP_OFFSET']
+            print("Temperature reading is: %f" % farenheight)
+            return farenheight
+    except Exception as e:
+        return str(e)

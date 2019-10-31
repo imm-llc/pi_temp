@@ -9,9 +9,12 @@ DHT_PIN = app.config['DHT_PIN']
 
 def get_humidity():
 
-    humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
-    
-    if humidity is not None:
-        print("Humidity reading is: %f" % humidity)
-        return humidity
+    try:
+        humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)
+        
+        if humidity is not None:
+            print("Humidity reading is: %f" % humidity)
+            return humidity
+    except Exception as e:
+        return str(e)
     
