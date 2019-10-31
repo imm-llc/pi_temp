@@ -5,11 +5,9 @@ from flask import jsonify
 @app.route('/temp')
 def temp():
 
-    #return jsonify({"temperature": temp_monitor.get_temp()})
     return jsonify(temp_monitor.get_temp())
 
 @app.route('/humidity')
 def humidity():
     
-    #return jsonify({"humidity": humidity_monitor.get_humidity()})
     return jsonify(humidity_monitor.get_humidity())
