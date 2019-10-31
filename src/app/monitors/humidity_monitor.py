@@ -14,7 +14,9 @@ def get_humidity():
         
         if humidity is not None:
             print("Humidity reading is: %f" % humidity)
-            return humidity
+            return {"humidity": humidity, "error": "no"}
+        else:
+            return {"humidity": humidity, "error": "yes"}
     except Exception as e:
-        return str(e)
+        return {"humidity": humidity, "error": "yes", "err_string": str(e)}
     
