@@ -36,6 +36,7 @@ pipeline{
                 
             }
         }
+        
         /*
         The plugin we use for this isn't pipeline compatible
 
@@ -46,7 +47,6 @@ pipeline{
         }
         */
 
-        // https://jenkins.io/doc/pipeline/steps/publish-over-ssh/
         stage("Push package"){
             steps{
                 script{
